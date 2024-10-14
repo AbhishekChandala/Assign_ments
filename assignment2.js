@@ -76,3 +76,105 @@ console.log(calculator.add(5, 3));       // Output: 8
 console.log(calculator.subtract(10, 6)); // Output: 4
 console.log(calculator.multiply(4, 7));  // Output: 28
 console.log(calculator.divide(20, 4));   // Output: 5
+
+//5. Loops: Iterating over Arrays and Using Break & Continue
+//Iterate over an array of numbers using a for loop and print each number:
+let numbers = [1, 2, 3, 4, 5];
+for (let i = 0; i < numbers.length; i++) {
+    console.log(numbers[i]);
+}
+//Iterate over an array of strings using a while loop and print each string:
+let strings = ['Hello', 'World', 'JavaScript'];
+let i = 0;
+while (i < strings.length) {
+    console.log(strings[i]);
+    i++;
+}
+//Use a for loop to find the sum of all elements in an array:
+let sum = 0;
+for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+}
+console.log(sum);  // Output: 15
+//Use a while loop to find the first even number in an array:
+let evenFound = false;
+i = 0;
+while (i < numbers.length && !evenFound) {
+    if (numbers[i] % 2 === 0) {
+        console.log(numbers[i]);
+        evenFound = true;
+    }
+    i++;
+}
+//Use a for loop with a break statement to exit the loop when a certain condition is met:
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === 3) {
+        break;
+    }
+    console.log(numbers[i]);
+}
+//Use a for loop with a continue statement to skip certain elements in the array:
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] === 3) {
+        continue;
+    }
+    console.log(numbers[i]);
+}
+//6. Variable Scope, Hoisting, and this Keyword
+//Demonstrate the difference between global and local variables using examples:
+let globalVar = 'I am global';
+
+function testScope() {
+    let localVar = 'I am local';
+    console.log(globalVar);  // Accessible
+    console.log(localVar);   // Accessible within function
+}
+
+testScope();
+console.log(globalVar);  // Accessible
+console.log(localVar);   // Error: localVar is not defined
+//Explain and demonstrate hoisting:
+console.log(hoistedVar);  // Output: undefined (due to hoisting)
+var hoistedVar = 'I am hoisted';
+
+// Function hoisting example
+hoistedFunction();  // Works due to hoisting
+function hoistedFunction() {
+    console.log('This function is hoisted!');
+}
+//Write code to illustrate hoisting and its consequences:
+console.log(myVar);  // Output: undefined (hoisted declaration but not the value)
+var myVar = 'Hoisted variable';
+//7. Understanding this Keyword and Arrow Functions
+//this keyword behavior in regular functions, object methods, and arrow functions:
+let person = {
+    name: 'Alice',
+    regularFunction: function() {
+        console.log(this.name);  // Refers to person object
+    },
+    arrowFunction: () => {
+        console.log(this.name);  // Refers to global scope, not person
+    }
+};
+
+person.regularFunction();  // Output: Alice
+person.arrowFunction();    // Output: undefined (as this refers to global)
+//Use arguments keyword to access all arguments passed to a function:
+function showArguments() {
+    console.log(arguments);
+}
+
+showArguments(1, 2, 3, 4);
+//    Compare and contrast objects vs primitives: 
+//Objects are mutable, and when assigned to a new variable, they reference the same memory location:
+
+let obj1 = { a: 1 };
+let obj2 = obj1;
+obj2.a = 2;
+console.log(obj1.a);  // Output: 2 (shared reference)
+
+//Primitives, however, are immutable and are copied by value:
+let x = 10;
+let y = x;
+y = 20;
+console.log(x);  // Output: 10 (independent values)
